@@ -1,1 +1,6 @@
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;font-family:"Montserrat",sans-serif}/*# sourceMappingURL=index.css.map */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+}/*# sourceMappingURL=index.css.map */

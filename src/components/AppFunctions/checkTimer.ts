@@ -20,7 +20,7 @@ export const checkTimer = (
     if (mode === "pomodoro") count++;
     setSessionCount(count);
     if (mode === "pomodoro") {
-      if (sessionCount < 3) handleChangeMode("short", 5);
+      if (sessionCount < 2) handleChangeMode("short", 5);
       else {
         handleChangeMode("long", 15);
         setSessionCount(0);

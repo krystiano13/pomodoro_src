@@ -1,1 +1,49 @@
-.PanelButtons{width:100%;display:flex;justify-content:space-evenly;align-items:center;margin-bottom:5vh}@media screen and (orientation: portrait){.PanelButtons{width:85vw}}.PanelButtons__start{width:50%;height:8vh;font-size:2.75vh;border:none;cursor:pointer;color:#fff;position:static;background-color:#244e26;font-weight:500;z-index:1000;border-bottom:solid .75vh #112512}.PanelButtons__stop{width:50%;height:8vh;font-size:2.75vh;border:none;cursor:pointer;color:#fff;position:static;background-color:#4e2424;font-weight:500;z-index:1000;border-bottom:solid .4vh #251211}.PanelButtons__skip{width:8vh;height:8vh;background-color:rgba(0,0,0,0);border:none;cursor:pointer}.PanelButtons__skip__img{width:100%;height:100%}/*# sourceMappingURL=PanelButtons.css.map */
+.PanelButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+@media screen and (orientation: portrait) {
+  .PanelButtons {
+    width: 85vw;
+  }
+}
+.PanelButtons__start {
+  width: 50%;
+  height: 8vh;
+  font-size: 2.75vh;
+  border: none;
+  cursor: pointer;
+  color: white;
+  position: static;
+  background-color: #244e26;
+  font-weight: 500;
+  z-index: 1000;
+  border-bottom: solid 0.75vh #112512;
+}
+.PanelButtons__stop {
+  width: 50%;
+  height: 8vh;
+  font-size: 2.75vh;
+  border: none;
+  cursor: pointer;
+  color: white;
+  position: static;
+  background-color: #4e2424;
+  font-weight: 500;
+  z-index: 1000;
+  border-bottom: solid 0.4vh #251211;
+}
+.PanelButtons__skip {
+  width: 8vh;
+  height: 8vh;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.PanelButtons__skip__img {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=PanelButtons.css.map */
