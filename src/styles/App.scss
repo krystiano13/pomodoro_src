@@ -1,0 +1,157 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #222;
+  color: white;
+  padding-top: 15vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background-color 250ms;
+  will-change: background-color;
+
+  &__settingsButton {
+    width: 3vw;
+    height: 3vw;
+    position: fixed;
+    transform: translate(47.5vw, -13.5vh);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    transition: transform 250ms ease-in-out;
+    will-change: transform;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__settingsButton:hover {
+    transform: translate(47.5vw, -13.5vh) scale(1.1);
+  }
+
+  @media screen and (orientation: portrait) {
+    padding-top: 7.5vh;
+  }
+
+  @mixin ball($size, $startX, $startY) {
+    z-index: 2;
+    position: fixed;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translate($startX, $startY);
+  }
+
+  &__ball {
+    @include ball(50vh, -60vw, -55vh);
+    animation: ball1 infinite 16s;
+  }
+
+  &__ball2 {
+    @include ball(60vh, 100vw, -80vh);
+    animation: ball2 infinite 25s;
+    animation-delay: ball2 4s;
+  }
+
+  &__ball3 {
+    @include ball(40vh, 100vw, 80vh);
+    animation: ball3 infinite 15s 6s;
+  }
+
+  &__ball4 {
+    @include ball(100vh, -180vw, 20vh);
+    animation: ball4 infinite 45s 7.5s;
+  }
+
+  &__ball5 {
+    @include ball(72vh, 100vw, 35vh);
+    animation: ball5 infinite 60s;
+  }
+
+  @keyframes ball1 {
+    from {
+      transform: translate(-60vw, -55vh);
+    }
+
+    to {
+      transform: translate(75vw, 75vh);
+    }
+  }
+
+  @keyframes ball2 {
+    from {
+      transform: translate(100vw, -80vh);
+    }
+
+    to {
+      transform: translate(-100vw, 45vh);
+    }
+  }
+
+  @keyframes ball3 {
+    from {
+      transform: translate(100vw, 80vh);
+    }
+
+    to {
+      transform: translate(-100vw, 21vh);
+    }
+  }
+
+  @keyframes ball4 {
+    from {
+      transform: translate(-180vw, 20vh);
+    }
+
+    to {
+      transform: translate(100vw, 35vh);
+    }
+  }
+
+  @keyframes ball5 {
+    0% {
+      transform: translate(100vw, 35vh);
+    }
+
+    35% {
+      transform: translate(-40vw, -120vh);
+    }
+
+    65% {
+      transform: translate(-100vw, 0vh);
+    }
+
+    100% {
+      transform: translate(100vw, 35vh);
+    }
+  }
+
+  &__title {
+    font-size: 5vh;
+
+    @media screen and (orientation: portrait) {
+      font-size: 4.5vh;
+      text-align: center;
+    }
+  }
+}
+
+.pomodoro {
+  background-color: #461d1d;
+}
+
+.short {
+  background-color: #2b4123;
+}
+
+.long {
+  background-color: #17263a;
+}

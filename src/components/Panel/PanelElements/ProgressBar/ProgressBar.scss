@@ -1,0 +1,16 @@
+.ProgressBar {
+  width: 100vw;
+  height: 2.5vh;
+  background-color: #111;
+  margin-top: 6vh;
+
+  &__body {
+    display: block;
+    position: relative;
+    background-color: whitesmoke;
+    height: 100%;
+
+    transition: 250ms width;
+    will-change: width;
+  }
+}
