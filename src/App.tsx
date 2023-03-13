@@ -58,8 +58,10 @@ const App = () => {
   };
 
   const handleResetTimer = () => {
-    setTime(0);
-    setTotalTime(0);
+    if (start === true) {
+      setTime(0);
+      setTotalTime(0);
+    }
   };
 
   const decreaseTimerValue = () => {
