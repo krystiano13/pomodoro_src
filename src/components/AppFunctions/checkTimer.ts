@@ -1,34 +1,35 @@
 import { playSound } from "./playSound";
-import { handleSetTimer } from "./handleSetTimer";
 import alarm from "../../assets/sounds/alarm.mp3";
 
-export const checkTimer = (
-  time: number,
-  start: boolean,
-  mode: string,
-  setTime: React.Dispatch<React.SetStateAction<number>>,
-  setStart: React.Dispatch<React.SetStateAction<boolean>>,
-  setSessionCount: React.Dispatch<React.SetStateAction<number>>,
-  sessionCount: number,
-  handleChangeMode: (mode: string, minutes: number) => void,
-  handleStopTimer: () => void
-) => {
-  if (time <= 0 && start === true) {
-    setStart(false);
+export const checkTimer = (timeProps: TimePropsInterface) => {
+  if (timeProps.time <= 0 && timeProps.start === true) {
+    timeProps.setStart(false);
     playSound(new Audio(alarm));
-    let count = sessionCount;
-    if (mode === "pomodoro") count++;
-    setSessionCount(count);
-    if (mode === "pomodoro") {
-      if (sessionCount < 2) handleChangeMode("short", 5);
+    let count = timeProps.sessionCount;
+    if (timeProps.mode === "pomodoro") count++;
+    timeProps.setSessionCount(count);
+    if (timeProps.mode === "pomodoro") {
+      if (timeProps.sessionCount < 2) timeProps.handleChangeMode("short", 5);
       else {
-        handleChangeMode("long", 15);
-        setSessionCount(0);
+        timeProps.handleChangeMode("long", 15);
+        timeProps.setSessionCount(0);
       }
-    } else if (mode === "short") {
-      handleChangeMode("pomodoro", 25);
-    } else handleChangeMode("pomodoro", 25);
-    setTime(0);
-    handleStopTimer();
+    } else if (timeProps.mode === "short") {
+      timeProps.handleChangeMode("pomodoro", 25);
+    } else timeProps.handleChangeMode("pomodoro", 25);
+    timeProps.setTime(0);
+    timeProps.handleStopTimer();
   }
 };
+
+interface TimePropsInterface {
+  time: number;
+  start: boolean;
+  mode: string;
+  setTime: React.Dispatch<React.SetStateAction<number>>;
+  setStart: React.Dispatch<React.SetStateAction<boolean>>;
+  setSessionCount: React.Dispatch<React.SetStateAction<number>>;
+  sessionCount: number;
+  handleChangeMode: (mode: string, minutes: number) => void;
+  handleStopTimer: () => void;
+}

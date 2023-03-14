@@ -9,38 +9,39 @@ import { handleSetTimer } from "./components/AppFunctions/handleSetTimer";
 import { playSound } from "./components/AppFunctions/playSound";
 import { checkTimer } from "./components/AppFunctions/checkTimer";
 import { buttons } from "./components/Navbar/buttons";
+import { AppBackground } from "./components/AppFunctions/AppBackground";
 
 const App = () => {
-  const [mode, setMode] = useState("pomodoro");
-  const [minutes, setMinutes] = useState(25);
-  const [start, setStart] = useState(false);
-  const [time, setTime] = useState(0);
-  const [totalTime, setTotalTime] = useState(0);
-  const [sessionCount, setSessionCount] = useState(0);
-  const [settingsModal, setSettingsModal] = useState(false);
+  const [mode, setMode] = useState<string>("pomodoro");
+  const [minutes, setMinutes] = useState<number>(25);
+  const [start, setStart] = useState<boolean>(false);
+  const [time, setTime] = useState<number>(0);
+  const [totalTime, setTotalTime] = useState<number>(0);
+  const [sessionCount, setSessionCount] = useState<number>(0);
+  const [settingsModal, setSettingsModal] = useState<boolean>(false);
   const [navButtons, setNavButtons] = useState(buttons);
 
   const intervalRef = useRef<NodeJS.Timer>();
-  const timeRef = useRef(0);
-  const minRef = useRef(minutes);
-  const secRef = useRef(0);
+  const timeRef = useRef<number>(0);
+  const minRef = useRef<number>(minutes);
+  const secRef = useRef<number>(0);
 
   useEffect(() => {
     timeRef.current = time;
     minRef.current = Math.floor(timeRef.current / 60);
     secRef.current = timeRef.current - minRef.current * 60;
 
-    checkTimer(
-      time,
-      start,
-      mode,
-      setTime,
-      setStart,
-      setSessionCount,
-      sessionCount,
-      handleChangeMode,
-      handleStopTimer
-    );
+    checkTimer({
+      time: time,
+      start: start,
+      mode: mode,
+      setTime: setTime,
+      setStart: setStart,
+      setSessionCount: setSessionCount,
+      sessionCount: sessionCount,
+      handleChangeMode: handleChangeMode,
+      handleStopTimer: handleStopTimer,
+    });
   }, [time]);
 
   useEffect(() => {
@@ -128,11 +129,7 @@ const App = () => {
         reset={handleResetTimer}
       />
 
-      <div className="App__ball" />
-      <div className="App__ball2" />
-      <div className="App__ball3" />
-      <div className="App__ball4" />
-      <div className="App__ball5" />
+      <AppBackground />
 
       <button
         onClick={() => {
