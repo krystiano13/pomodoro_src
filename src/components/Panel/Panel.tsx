@@ -16,25 +16,29 @@ interface PanelInterface {
   click: () => void;
 }
 
-const Panel: React.FC<PanelInterface> = ({
-  minutes,
-  seconds,
-  start,
-  totalTime,
-  time,
-  startTimer,
-  stopTimer,
-  reset,
-  click
-}) => {
+const Panel: React.FC<PanelInterface> = (props: PanelInterface) => {
   return (
     <main className="Panel">
       <Timer
-        minutes={minutes < 10 ? `0${minutes.toString()}` : minutes.toString()}
-        seconds={seconds < 10 ? `0${seconds.toString()}` : seconds.toString()}
+        minutes={
+          props.minutes < 10
+            ? `0${props.minutes.toString()}`
+            : props.minutes.toString()
+        }
+        seconds={
+          props.seconds < 10
+            ? `0${props.seconds.toString()}`
+            : props.seconds.toString()
+        }
       />
-      <PanelButtons click={click} reset={reset} timerStatus={start} stop={stopTimer} start={startTimer} />
-      <ProgressBar time={time} totalTime={totalTime} />
+      <PanelButtons
+        click={props.click}
+        reset={props.reset}
+        timerStatus={props.start}
+        stop={props.stopTimer}
+        start={props.startTimer}
+      />
+      <ProgressBar time={props.time} totalTime={props.totalTime} />
     </main>
   );
 };

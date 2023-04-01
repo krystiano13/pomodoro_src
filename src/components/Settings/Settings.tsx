@@ -19,7 +19,7 @@ const Settings: React.FC<SettingsInterface> = ({
   setSettingsModal,
   settingsModal,
 }) => {
-  const handleChangeMinutes = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTimeBlock = (e: React.ChangeEvent<HTMLInputElement>) => {
     const buttons = [...navButtons];
     buttons[Number(e.target.id)].minutes = Number(e.target.value);
     setNavButtons(buttons);
@@ -42,7 +42,7 @@ const Settings: React.FC<SettingsInterface> = ({
             defaultValue={navButtons[0].minutes}
             min={1}
             id="0"
-            onChange={(e) => handleChangeMinutes(e)}
+            onChange={(e) => handleChangeTimeBlock(e)}
           />
         </div>
         <div className="settings__form__element">
@@ -56,7 +56,7 @@ const Settings: React.FC<SettingsInterface> = ({
             defaultValue={navButtons[1].minutes}
             min={1}
             id="1"
-            onChange={(e) => handleChangeMinutes(e)}
+            onChange={(e) => handleChangeTimeBlock(e)}
           />
         </div>
         <div className="settings__form__element">
@@ -70,7 +70,7 @@ const Settings: React.FC<SettingsInterface> = ({
             defaultValue={navButtons[2].minutes}
             min={1}
             id="2"
-            onChange={(e) => handleChangeMinutes(e)}
+            onChange={(e) => handleChangeTimeBlock(e)}
           />
         </div>
         <button

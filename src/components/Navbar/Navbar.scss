@@ -1,5 +1,5 @@
 .Navbar {
-  width: 28vw;
+  width: auto;
   display: flex;
   justify-content: space-between;
 
@@ -8,7 +8,7 @@
   }
 
   &__btn {
-    width: 8vw;
+    width: 16vh;
     height: 3vh;
     cursor: pointer;
     font-size: 1.65vh;
@@ -17,14 +17,19 @@
     will-change: background-color;
     position: static;
     z-index: 1000;
+    margin-left : 1vw;
+    margin-right : 1vw;
 
     @media screen and (orientation: portrait) {
       width: 25vw;
     }
 
     &--choosen {
-      width: 8vw;
+      width: 16vh;
       height: 3vh;
+      margin-left : 1vw;
+      margin-right : 1vw;
+
 
       @media screen and (orientation: portrait) {
         width: 25vw;

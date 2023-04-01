@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 export const handleSetTimer = (
   time: number,
   minutes: number,
-  setTotalTime: React.Dispatch<React.SetStateAction<number>>,
-  setTime: React.Dispatch<React.SetStateAction<number>>,
-  setStart: React.Dispatch<React.SetStateAction<boolean>>,
+  setTotalTime: Dispatch<SetStateAction<number>>,
+  setTime: Dispatch<SetStateAction<number>>,
+  setStart: Dispatch<SetStateAction<boolean>>,
   decreaseTimerValue: () => void
 ) => {
   let timeCount = 0;

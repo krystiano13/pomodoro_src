@@ -1,5 +1,7 @@
+import React from "react";
 import { playSound } from "./playSound";
 import alarm from "../../assets/sounds/alarm.mp3";
+import { TimePropsInterface } from "./TimePropsInterface";
 
 export const checkTimer = (timeProps: TimePropsInterface) => {
   if (timeProps.time <= 0 && timeProps.start === true) {
@@ -22,14 +24,3 @@ export const checkTimer = (timeProps: TimePropsInterface) => {
   }
 };
 
-interface TimePropsInterface {
-  time: number;
-  start: boolean;
-  mode: string;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
-  setStart: React.Dispatch<React.SetStateAction<boolean>>;
-  setSessionCount: React.Dispatch<React.SetStateAction<number>>;
-  sessionCount: number;
-  handleChangeMode: (mode: string, minutes: number) => void;
-  handleStopTimer: () => void;
-}

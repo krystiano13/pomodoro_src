@@ -5,11 +5,12 @@ import { Panel } from "./components/Panel/Panel";
 import click from "./assets/sounds/click.mp3";
 import gear from "./assets/images/gear.png";
 import { Settings } from "./components/Settings/Settings";
-import { handleSetTimer } from "./components/AppFunctions/handleSetTimer";
-import { playSound } from "./components/AppFunctions/playSound";
-import { checkTimer } from "./components/AppFunctions/checkTimer";
+import { handleSetTimer } from "./components/App/handleSetTimer";
+import { checkTimer } from "./components/App/checkTimer";
 import { buttons } from "./components/Navbar/buttons";
-import { AppBackground } from "./components/AppFunctions/AppBackground";
+import { AppBackground } from "./components/App/AppBackground";
+import { handleResetTimer } from "./components/App/handleResetTimer";
+import { playSound } from "./components/App/playSound";
 
 const App = () => {
   const [mode, setMode] = useState<string>("pomodoro");
@@ -58,21 +59,15 @@ const App = () => {
       : (minRef.current = 0);
   };
 
-  const handleResetTimer = () => {
-    if (start === true) {
-      setTime(0);
-      setTotalTime(0);
-    }
-  };
-
-  const decreaseTimerValue = () => {
+  const decreaseTimerValue = async () => {
     let t = timeRef.current;
     t--;
-    setTime(t);
+    await setTime(t);
   };
 
   const handleStopTimer = () => {
     clearInterval(intervalRef.current);
+    setTime(timeRef.current);
     setStart(false);
   };
 
@@ -110,10 +105,10 @@ const App = () => {
             setStart,
             decreaseTimerValue
           );
+          setStart(true);
           intervalRef.current = setInterval(() => {
             decreaseTimerValue();
           }, 1000);
-          setStart(true);
         }}
         stopTimer={() => {
           handleStopTimer();
@@ -126,7 +121,9 @@ const App = () => {
         seconds={secRef.current}
         totalTime={totalTime}
         time={timeRef.current}
-        reset={handleResetTimer}
+        reset={() =>
+          handleResetTimer({ start, setTime, setTotalTime, setStart, timeRef })
+        }
       />
 
       <AppBackground />
